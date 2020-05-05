@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/Tuxedo-Mask/ToolBox/issues"
   },
-  "homepage": "https://github.com/Tuxedo-Mask/ToolBox#readme"
+  "homepage": "https://github.com/Tuxedo-Mask/ToolBox#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
