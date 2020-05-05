@@ -6,6 +6,8 @@ app.get('/', function (req, res) {
 });
 
 const PORT = 3000;
+const MYSQL_PORT = 3306;
+const X_PROTOCOL_PORT = 33060;
 app.listen(PORT, function () {
     console.log(`Server is listening on port ${PORT}!`);
 });
