@@ -11,8 +11,8 @@
 6. add dev, test, prod enviroments 
 7. unit test (mocha/chai/sinon/ nyc )
 8. husky
-9. use confing for db credentials
-10. 
+9. use confing for db credentials (+)
+10. investigate promisify library
 
 
 https://editor.swagger.io/
