@@ -1,4 +1,4 @@
-// TODO add logger
+// VZ::TODO add logger
 // const logger = require('../logger');
 
 module.exports = (errType, err) => {

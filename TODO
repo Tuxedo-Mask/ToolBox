@@ -1,0 +1,15 @@
+1. test swagger /docs endpoint CRUDE - Create Read Update Delete Execute
+    a. get testUser     Read
+    b. post testUser    Create
+    c. delete testUser  Delete
+    d. put testUser     Update
+
+2. eslint 
+3. routes
+4. add logger
+5. db connectionPool
+6. add dev, test, prod enviroments 
+7. unit test (mocha/chai/sinon/ nyc )
+8. husky
+9. use confing for db credentials
+10. 

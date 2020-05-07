@@ -25,7 +25,7 @@ process.on('unhandledRejection', err => uncaughtErrorHandler('unhandledRejection
 const express = require("express");
 const config = require("./config");
 const app = express();
-const dbManager = require("./ToolBoxDB/dbManager")();
+const dbManager = require("./src/dbManager")();
 
 const mysql = require("mysql");
 var con = mysql.createConnection({
@@ -60,7 +60,7 @@ con.connect(function(err) {
     dbManager.CreateTestTable(con);
     dbManager.DeleteAllData(con);
     dbManager.CreateTestData(con);
-    dbManager.SelecAll(con);
+    dbManager.SelectAll(con);
 });
 
 // HH::TODO check if call to connect blocks event loop;

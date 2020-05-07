@@ -39,7 +39,7 @@ module.exports = () => {
                 console.log("Added TestUsers Data");
             });
         },
-        SelecAll: (con) => {
+        SelectAll: (con) => {
             const selectAll = "SELECT id, name, lastName FROM TestUsers WHERE id > 0";
 
             con.query(selectAll, function (err, result) {

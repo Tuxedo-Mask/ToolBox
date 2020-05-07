@@ -7,5 +7,5 @@ module.exports = (app) => {
   app.use(express.json());
   // Running controllers
   app.use('/', setupRoutes());
-  app.use('/swagger', swagger);
+  app.use('/docs', swagger);
 };

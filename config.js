@@ -1,4 +1,0 @@
-
-const PORT = 3000;
-const MYSQL_PORT = 3306;
-const X_PROTOCOL_PORT = 33060;
