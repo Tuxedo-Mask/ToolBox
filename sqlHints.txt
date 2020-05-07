@@ -1,0 +1,14 @@
+// to run sql exectue
+mysql -u root -p
+
+// after that run this in mysql command line, in order to create testUser
+CREATE USER 'testUser'@'localhost' IDENTIFIED BY 'Password1';
+
+// after creating testUser, grant him all premissions for scheme
+GRANT ALL PRIVILEGES ON *.* TO 'testUser'@'localhost' WITH GRANT OPTION;
+// GRANT SUPER ON *.* TO testUser@'localhost' IDENTIFIED BY 'Password1';
+
+// and flush privileges
+FLUSH PRIVILEGES;
+
+// GRANT ALL PRIVILEGES ON testscheme.* TO 'testUser'@'localhost';
