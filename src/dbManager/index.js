@@ -1,3 +1,3 @@
 module.exports = () => {
-    return require("./dbManager");
+  return require("./dbManager");
 };

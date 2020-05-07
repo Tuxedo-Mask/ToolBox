@@ -5,8 +5,10 @@ const {
   NODE_ENV,
   PORT,
   LOG_LEVEL,
-  
-
+  dbHost,
+  dbUser,
+  dbPassword,
+  dbName
 } = process.env;
 
 module.exports = {

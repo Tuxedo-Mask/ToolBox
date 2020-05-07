@@ -1,8 +1,8 @@
 'use strict';
 
 if (!process.env.NODE_ENV || process.env.NODE_ENV === environments.dev) {
-    // eslint-disable-next-line global-require
-    require('dotenv').config();
+  // eslint-disable-next-line global-require
+  require('dotenv').config();
 }
 
 const app = require('express')();
@@ -29,45 +29,45 @@ const dbManager = require("./src/dbManager")();
 
 const mysql = require("mysql");
 var con = mysql.createConnection({
-    host: "localhost",
-    user: "testUser",
-    password: "Password1"
+  host: "localhost",
+  user: "testUser",
+  password: "Password1"
 });
 
 con.connect(function(err) {
-    if (err) {
-        throw err;
-    }
-    console.log("Connected to mysql DB!");
+  if (err) {
+    throw err;
+  }
+  console.log("Connected to mysql DB!");
 
-    dbManager.CreateTestScheme(con)
+  dbManager.CreateTestScheme(con)
 });
 con.end();
 
 // HH::TODO find more elegant solution
-con =  mysql.createConnection({
-    host: "localhost",
-    user: "testUser",
-    password: "Password1",
-    database: "testDB"
+con = mysql.createConnection({
+  host: "localhost",
+  user: "testUser",
+  password: "Password1",
+  database: "testDB"
 });
 con.connect(function(err) {
-    if (err) {
-        throw err;
-    }
-    console.log("Connected to mysql DB!");
+  if (err) {
+    throw err;
+  }
+  console.log("Connected to mysql DB!");
 
-    dbManager.CreateTestTable(con);
-    dbManager.DeleteAllData(con);
-    dbManager.CreateTestData(con);
-    dbManager.SelectAll(con);
+  dbManager.CreateTestTable(con);
+  dbManager.DeleteAllData(con);
+  dbManager.CreateTestData(con);
+  dbManager.SelectAll(con);
 });
 
 // HH::TODO check if call to connect blocks event loop;
 app.get('/', function (req, res) {
-    res.send('Welcome to the real world!');
+  res.send('Welcome to the real world!');
 });
 
 app.listen(config.PORT, function () {
-    console.log(`Server is listening on port ${config.PORT}!`);
+  console.log(`Server is listening on port ${config.PORT}!`);
 });
