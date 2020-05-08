@@ -42,9 +42,10 @@ module.exports = (microserviceName, loglevel = (process.env.LOG_LEVEL || "info")
   let lineNumber = null;
 
   const formatter = format.printf((msg) => {
+    // HH::TODO discuss with VZ:: the logging format
     return JSON.stringify({
-      timestamp: msg.timestamp,
       shortmessage: getFormattedString(msg.message),
+      timestamp: msg.timestamp,
       level: msg.level,
       source: microserviceName,
       file: fileName,

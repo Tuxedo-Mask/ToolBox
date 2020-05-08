@@ -1,19 +1,16 @@
 "use strict";
+const constants = require("./src/constants");
+const logger = require("./src/logger")();
 
-require('dotenv').config();
+if (!process.env.NODE_ENV || process.env.NODE_ENV === constants.environments.dev) {
+  // eslint-disable-next-line global-require
+  require('dotenv').config();
+  const config = require('./src/config');
+  logger.info(`Running in '${config.nodeEnv}' environment`);
+}
 
-// if (!process.env.NODE_ENV || process.env.NODE_ENV === environments.dev) {
-//   // eslint-disable-next-line global-require
-//   require('dotenv').config();
-// }
-
-
-const config = require('./src/config');
 const attachMiddlewares = require('./src/middlewares');
 const { uncaughtErrorHandler } = require('./src/utils');
-
-
-console.log(`Running in '${config.nodeEnv}' environment`);
 
 // Checking Uncaught Exceptions and Unhandled Rejections
 process.on('uncaughtException', err => uncaughtErrorHandler('uncaughtException', err));
@@ -32,6 +29,6 @@ dbManager.Test();
 });
 
 app.listen(config.PORT, function () {
-  console.log(`Server is listening on port ${config.PORT}!`);
+  logger.info(`Server is listening on port ${config.PORT}!`);
 });
 */
