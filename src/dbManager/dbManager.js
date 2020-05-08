@@ -25,27 +25,27 @@ const Query = async function query(conn, sql, guid = null) {
   });
 }
 
-const CreateTestScheme = (con) => {
+const CreateTestScheme = async (con) => {
   const createTestDBScript = "CREATE DATABASE IF NOT EXISTS testDB";
-  Query(con, createTestDBScript);
+  await Query(con, createTestDBScript);
   console.log("Database testDB created");
 };
 
-const CreateTestTable = (con) => {
+const CreateTestTable = async (con) => {
   const createTestUsersTableScript = "CREATE TABLE IF NOT EXISTS TestUsers (id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(255), lastName VARCHAR(255))";
-  Query(con, createTestUsersTableScript);
+  await Query(con, createTestUsersTableScript);
   console.log("Created Table TestUsers");
 };
 
-const DeleteAllData = (con) => {
+const DeleteAllData = async (con) => {
   const clear = "DELETE FROM TestUsers WHERE id > 0";
-  Query(con, clear);
+  await Query(con, clear);
   console.log("Cleared TestUsers table");
 };
 
-const CreateTestData = (con) => {
+const CreateTestData = async (con) => {
   const createTestUsersDataScript = "INSERT INTO TestUsers (name, lastName) VALUES ('Hayk', 'Hakobyan')";
-  Query(con, createTestUsersDataScript);
+  await Query(con, createTestUsersDataScript);
   console.log("Added TestUsers Data");
 };
 

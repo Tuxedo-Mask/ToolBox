@@ -6,13 +6,14 @@
 
 2. eslint 
 3. routes
-4. add logger
+4. add colorized logging for logger
 5. db connectionPool
 6. add dev, test, prod enviroments 
 7. unit test (mocha/chai/sinon/ nyc )
 8. husky
 9. use confing for db credentials (+)
 10. investigate promisify library
+11. fix all commented TODOs
 
 
 https://editor.swagger.io/
