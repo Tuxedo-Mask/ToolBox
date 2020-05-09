@@ -59,7 +59,8 @@ module.exports = (microserviceName, loglevel = (process.env.LOG_LEVEL || "info")
       formatter
     ),
     transports: [new (transports.Console)({
-      level: loglevel // logs up to specified level
+      level: loglevel, // logs up to specified level
+      stderrLevels: ["error", "error"] // [redirect stream to std::err, "all messages logged by error function]"
     })]
   });
 
