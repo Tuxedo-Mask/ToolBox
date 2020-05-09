@@ -14,8 +14,8 @@ module.exports = {
 				"requireStringLiterals": false
 			}
 		],
-		"max-len": ["error", { "code": 160, "tabWidth": 4, "ignoreComments": true }],
-		"indent": ["error", 4],
+		"max-len": ["error", { "code": 160, "tabWidth": 2, "ignoreComments": true }],
+		"indent": ["error", 2],
 		"quotes": ["error", "double"],
 		"no-console": "error",
 		"global-require": "error",

@@ -12,7 +12,7 @@ const stringType = "string";
  * @param  {String} message - Message to be logged.
  * @return {String}
  */
-function getFormattedString(message) {
+function getFormattedString (message) {
   return typeof message === stringType ? message.replace(allLineBreaksRegExp, whiteSpace) : message;
 }
 
@@ -21,7 +21,7 @@ function getFormattedString(message) {
  * @description Retrieves caller's file name  and callLine.
  * @return {{String, Number}}
  */
-function getCallerInfo() {
+function getCallerInfo () {
   // We parse info to find file name and line number from function call stack,
   // Needed caller function is 4 level above from getCallerInfo() function call,
   // So the fourth element of call stack is taken here to process.
