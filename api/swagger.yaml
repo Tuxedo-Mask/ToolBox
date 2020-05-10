@@ -1,0 +1,8 @@
+openapi: "3.0.2"
+info:
+  title: ToolBox
+  version: "1.0"
+  description: "Helps organize you toolbox and find anything easily"
+servers:
+- url: localhost:3000/
+paths: {}
