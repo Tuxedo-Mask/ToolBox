@@ -11,7 +11,7 @@
 7. unit test (mocha/chai/sinon/ nyc )
 8. husky
 9. use confing for db credentials (+)
-10. add colorized logging for logger
+10. Switch between colorized or non colorized logger depending on dev, test or production environments
 11. add debug, warning logs
 12. redirrect error's output to std::err
 13. fix all commented TODOs
