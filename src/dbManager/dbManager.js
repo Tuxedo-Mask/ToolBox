@@ -32,6 +32,7 @@ const CreateTestScheme = async (con) => {
 };
 
 const CreateTestTable = async (con) => {
+  // eslint-disable-next-line max-len
   const createTestUsersTableScript = "CREATE TABLE IF NOT EXISTS TestUsers (id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(255), lastName VARCHAR(255))";
   await Query(con, createTestUsersTableScript);
   logger.info("Created Table TestUsers");

@@ -1,4 +1,4 @@
-1. test swagger /docs endpoint CRUDE - Create Read Update Delete Execute
+1. test swagger /docs endpoint CRUDE - Create Read Update Delete Execute (+)
     a. get testUser     Read
     b. post testUser    Create
     c. delete testUser  Delete
@@ -16,5 +16,6 @@
 12. redirrect error's output to std::err
 13. fix all commented TODOs
 14. review async await in code
+15. add controllers for get/post/delete/put testUser
 
 https://editor.swagger.io/

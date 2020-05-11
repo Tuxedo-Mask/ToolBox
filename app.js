@@ -12,11 +12,6 @@ const config = require("./src/config");
 
 const attachMiddlewares = require("./src/middlewares");
 const { uncaughtErrorHandler } = require("./src/utils");
-
-// Checking Uncaught Exceptions and Unhandled Rejections
-process.on("uncaughtException", err => uncaughtErrorHandler("uncaughtException", err));
-process.on("unhandledRejection", err => uncaughtErrorHandler("unhandledRejection", err));
-
 const app = require("express")();
 // Attach express middlewares
 attachMiddlewares(app);
@@ -28,3 +23,7 @@ attachMiddlewares(app);
 app.listen(config.port, function () {
   logger.info(`Server is listening on port ${config.port}!`);
 });
+
+// Checking Uncaught Exceptions and Unhandled Rejections
+process.on("uncaughtException", err => uncaughtErrorHandler("uncaughtException", err));
+process.on("unhandledRejection", err => uncaughtErrorHandler("unhandledRejection", err));
