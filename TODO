@@ -3,7 +3,7 @@
     b. post testUser    Create
     c. delete testUser  Delete
     d. put testUser     Update
-2. eslint fix all lint errors
+2. eslint fix all lint errors (+)
 3. routes
 4. investigate promisify library
 5. db connectionPool

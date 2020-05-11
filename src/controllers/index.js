@@ -1,4 +1,4 @@
-const healthz = require('./healthz');
+const healthz = require("./healthz");
 
 module.exports = {
   healthz

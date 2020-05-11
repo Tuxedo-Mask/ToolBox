@@ -1,6 +1,7 @@
 "use strict";
 
 const { createLogger, format, transports } = require("winston");
+const path = require("path");
 
 const allLineBreaksRegExp = /(\r\n|\n|\r)/gm;
 const whiteSpace = " ";
@@ -26,7 +27,7 @@ function getCallerInfo () {
   // Needed caller function is 4 level above from getCallerInfo() function call,
   // So the fourth element of call stack is taken here to process.
   let callerLine = Error().stack.split("\n")[3];
-  callerLine = callerLine.split("\\");
+  callerLine = callerLine.split(path.sep);
   callerLine = callerLine[callerLine.length - 1];
   callerLine = callerLine.split(":");
 

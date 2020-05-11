@@ -1,6 +1,6 @@
-const { dbCredentials } = require('../config');
+const { dbCredentials } = require("../config");
 const mysql = require("mysql");
-const logger = require('../logger')();
+const logger = require("../logger")();
 
 /**
  *
@@ -10,7 +10,7 @@ const logger = require('../logger')();
  * @returns {Promise<*>}
  * @private
  */
-const Query = async function query(conn, sql, guid = null) {
+const Query = async function query (conn, sql, guid = null) {
   logger.info(`SQL: ${sql}`, guid);
   return new Promise((resolve, reject) => {
     conn.query({ sql, timeout: 1000 }, (error, result) => {
@@ -23,7 +23,7 @@ const Query = async function query(conn, sql, guid = null) {
       resolve(result);
     });
   });
-}
+};
 
 const CreateTestScheme = async (con) => {
   const createTestDBScript = "CREATE DATABASE IF NOT EXISTS testDB";
@@ -70,7 +70,6 @@ module.exports = () => {
     Test: async () => {
       logger.info("Testing DB");
 
-      const mysql = require("mysql");
       const con = mysql.createConnection({
         host: dbCredentials.host,
         user: dbCredentials.user,
@@ -101,4 +100,4 @@ module.exports = () => {
       );
     }
   };
-}
+};

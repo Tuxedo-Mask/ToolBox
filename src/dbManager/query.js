@@ -1,5 +1,5 @@
-const { dbConfiguration } = require('../config');
-const log = require('../logger');
+const { dbConfiguration } = require("../config");
+const log = require("../logger");
 
 /**
  *
