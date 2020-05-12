@@ -42,18 +42,16 @@ module.exports = (microserviceName, loglevel = (process.env.LOG_LEVEL || "info")
   let fileName = null;
   let lineNumber = null;
 
-  const formatter = format.printf((msg) => {
-    // HH::TODO discuss with VZ:: the logging format
-    const message = JSON.stringify({
-      shortmessage: getFormattedString(msg.message),
-      timestamp: msg.timestamp,
-      level: msg.level,
-      source: microserviceName,
-      file: fileName,
-      line: lineNumber
-    });
-    return `${msg.level}:${message}`;
+  let formatter = format.printf((msg) => {
+    return `${msg.level}: ${getFormattedString(msg.message)}`;
   });
+
+  if (loglevel === "debug") {
+    formatter = format.printf((msg) => {
+      // HH::TODO add file path and decide print order
+      return `file: ${fileName}:${lineNumber} ${msg.level}: ${getFormattedString(msg.message)}`;
+    });
+  }
 
   const logger = createLogger({
     format: format.combine(
@@ -63,7 +61,7 @@ module.exports = (microserviceName, loglevel = (process.env.LOG_LEVEL || "info")
     ),
     transports: [new (transports.Console)({
       level: loglevel, // logs up to specified level
-      stderrLevels: ["error", "error"] // [redirect stream to std::err, "all messages logged by error function]"
+      stderrLevels: ["error"] // [redirect stream to std::err, "all messages logged by error function]"
     })]
   });
 
@@ -72,37 +70,37 @@ module.exports = (microserviceName, loglevel = (process.env.LOG_LEVEL || "info")
       const callerInfo = getCallerInfo();
       fileName = callerInfo.fileName;
       lineNumber = callerInfo.lineNumber;
-      return logger.error(getFormattedString(message));
+      return logger.error(message);
     },
     warn: (message) => {
       const callerInfo = getCallerInfo();
       fileName = callerInfo.fileName;
       lineNumber = callerInfo.lineNumber;
-      return logger.warn(getFormattedString(message));
+      return logger.warn(message);
     },
     info: (message) => {
       const callerInfo = getCallerInfo();
       fileName = callerInfo.fileName;
       lineNumber = callerInfo.lineNumber;
-      return logger.info(getFormattedString(message));
+      return logger.info(message);
     },
     verbose: (message) => {
       const callerInfo = getCallerInfo();
       fileName = callerInfo.fileName;
       lineNumber = callerInfo.lineNumber;
-      return logger.verbose(getFormattedString(message));
+      return logger.verbose(message);
     },
     debug: (message) => {
       const callerInfo = getCallerInfo();
       fileName = callerInfo.fileName;
       lineNumber = callerInfo.lineNumber;
-      return logger.debug(getFormattedString(message));
+      return logger.debug(message);
     },
     silly: (message) => {
       const callerInfo = getCallerInfo();
       fileName = callerInfo.fileName;
       lineNumber = callerInfo.lineNumber;
-      return logger.silly(getFormattedString(message));
+      return logger.silly(message);
     }
   };
 };
