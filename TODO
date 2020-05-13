@@ -13,9 +13,10 @@
 9. use confing for db credentials (+)
 10. Switch between colorized or non colorized logger depending on dev, test or production environments
 11. add debug, warning logs
-12. redirrect error's output to std::err
+12. redirrect error's output to std::err (+)
 13. fix all commented TODOs
-14. review async await in code
-15. add controllers for get/post/delete/put testUser
+14. review async await in code (+)
+15. add controllers for get/post/delete/put 
+16. add filePath to logger
 
 https://editor.swagger.io/
