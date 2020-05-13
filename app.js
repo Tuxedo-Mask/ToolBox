@@ -1,12 +1,12 @@
 "use strict";
 
 const constants = require("./src/constants");
-const logger = require("./src/logger")();
-
 if (!process.env.NODE_ENV || process.env.NODE_ENV === constants.environments.dev) {
   // eslint-disable-next-line global-require
-  require("dotenv").config();
+  require("dotenv").config("ToolBox");
 }
+
+const logger = require("./src/logger")();
 
 const config = require("./src/config");
 logger.info(`Running in "${config.nodeEnv}" environment`);

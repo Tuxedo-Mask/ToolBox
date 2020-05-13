@@ -17,6 +17,6 @@
 13. fix all commented TODOs
 14. review async await in code (+)
 15. add controllers for get/post/delete/put 
-16. add filePath to logger
+16. add filePath to logger (+)
 
 https://editor.swagger.io/
