@@ -1,4 +1,4 @@
-const swaggerUI = require("swagger-ui-express");
-const YAML = require("yamljs");
+const swaggerUI = require('swagger-ui-express');
+const YAML = require('yamljs');
 
-module.exports = [swaggerUI.serve, swaggerUI.setup(YAML.load("./api/openapi.yaml"))];
+module.exports = [swaggerUI.serve, swaggerUI.setup(YAML.load('./api/openapi.yaml'))];

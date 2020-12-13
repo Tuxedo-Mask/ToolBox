@@ -1,7 +1,7 @@
-"use strict";
+'use strict';
 
-const uncaughtErrorHandler = require("./uncaughtErrorHandler");
+const uncaughtErrorHandler = require('./uncaughtErrorHandler');
 
 module.exports = {
-  uncaughtErrorHandler
+  uncaughtErrorHandler,
 };

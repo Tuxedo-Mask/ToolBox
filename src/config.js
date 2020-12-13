@@ -1,5 +1,6 @@
-"use strict";
-const _ = require("lodash");
+'use strict';
+
+const _ = require('lodash');
 // VZ::TODO investigate 'envalid' module
 const {
   NODE_ENV,
@@ -8,7 +9,7 @@ const {
   dbHost,
   dbUser,
   dbPassword,
-  dbName
+  dbName,
 } = process.env;
 
 module.exports = {
@@ -19,10 +20,10 @@ module.exports = {
     host: dbHost,
     user: dbUser,
     password: dbPassword,
-    database: dbName
+    database: dbName,
     // port: MYSQL_PORT = 3306;
     // xProtocolPort: X_PROTOCOL_PORT = 33060,
     // sslCert: db_instance_server_ca_cert
     // port: !_.isUndefined(DATABASE_PORT) ? parseInt(DATABASE_PORT) : null
-  }
+  },
 };

@@ -1,5 +1,5 @@
 module.exports = {
   environments: {
-    dev: "development"
-  }
+    dev: 'development',
+  },
 };
