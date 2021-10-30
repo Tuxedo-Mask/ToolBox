@@ -1,4 +1,6 @@
-// to run sql exectue
+// to run sql instance using docker
+docker run --rm -p 3306:3306 --name sqlInstance -d -e MYSQL_ROOT_PASSWORD=Password1 mysql:5.7
+// to run sql execute
 mysql -u root -p
 
 // after that run this in mysql command line, in order to create testUser

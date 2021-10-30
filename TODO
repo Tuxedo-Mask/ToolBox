@@ -1,22 +1,16 @@
-1. test swagger /docs endpoint CRUDE - Create Read Update Delete Execute (+)
-    a. get testUser     Read
-    b. post testUser    Create
-    c. delete testUser  Delete
-    d. put testUser     Update
-2. eslint fix all lint errors (+)
-3. routes
-4. investigate promisify library
-5. db connectionPool
-6. add dev, test, prod enviroments 
-7. unit test (mocha/chai/sinon/ nyc )
-8. husky (+)
-9. use confing for db credentials (+)
-10. Switch between colorized or non colorized logger depending on dev, test or production environments
-11. add debug, warning logs
-12. redirrect error's output to std::err (+)
-13. fix all commented TODOs
-14. review async await in code (+)
-15. add controllers for get/post/delete/put 
-16. add filePath to logger (+)
-
-https://editor.swagger.io/
+test swagger /docs endpoint CRUDE - Create Read Update Delete Execute (+)
+   a. get testUser     Read
+   b. post testUser    Create
+   c. delete testUser  Delete
+   d. put testUser     Update(+)
+routes
+investigate promisify library
+Replace dbManager with knex
+add dev, test, prod enviroments 
+unit test (mocha/chai/sinon/ nyc )
+Switch between colorized or non colorized logger depending on dev, test or production environments
+add debug, warning logs
+fix all commented TODOs
+add controllers for get/post/delete/put
+Investigate how to implement baseline and incremental updates to DB
+Create initial relations for Users, Toolboxes and other entities.
