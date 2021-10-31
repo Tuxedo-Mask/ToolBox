@@ -1,63 +1,75 @@
 'use strict';
 
-const {dbCredentials} = require('../config');
-const mysql = require('mysql');
-const logger = require('../logger')();
+const knex = require('knex');
+const _ = require('lodash');
 
-/**
- *
- * @param {object} conn - db connection object
- * @param {string} sql - query
- * @param {any} guid - Id used inside logs
- * @return {Promise<*>}
- * @private
- */
-async function query(conn, sql, guid = null) {
-  logger.info(`SQL: ${sql}`, guid);
-  return new Promise((resolve, reject) => {
-    conn.query({sql, timeout: 1000}, (error, result) => {
-      if (error) {
-        error.message = `sql query failed: ${error.message}`;
-        logger.error(error.message, guid);
-        return reject(error);
+/** Class providing ability to connect to db via knex */
+class DbManager {
+  /**
+   * @function constructor
+   * @description construct DbManager object
+   * @param {Object} connetcion : connection details
+   */
+  constructor(connection = null) {
+    if (_.isNil(connection)) {
+      connection = {
+        // HH::TODO move env related staff to config
+        host: process.env.dbHost,
+        user: process.env.dbUser,
+        password: process.env.dbPassword,
+        database: process.env.dbName,
+        port: parseInt(process.env.db_port) | 3306,
+      };
+    }
+    connection.timezone = 'UTC';
+    connection.typeCast = function castField(field, useDefaultTypeCasting) {
+      if (field.type === 'BIT' && field.length === 1) {
+        const bytes = field.buffer();
+        return bytes ? bytes[0] === 1 : null;
       }
-      resolve(result);
+      return useDefaultTypeCasting();
+    },
+    this._knex = knex({
+      client: 'mysql',
+      connection: connection,
+      pool: {
+        min: process.env.db_min_pool_size ? parseInt(process.env.db_min_pool_size) : 0,
+        max: process.env.db_max_pool_size ? parseInt(process.env.db_max_pool_size) : 10,
+      },
     });
-  });
+  }
+  /**
+   * @function knex
+   * @description get knex object
+   * @return {Object} knex object
+   */
+  knex() {
+    return this._knex;
+  }
 }
 
-module.exports = () => {
-  return {
-    query,
-    test: async () => {
-      logger.info('Testing DB');
+/** Class to ensure that CloudSQL instance is the same for whole microservice */
+class Singleton {
+  /**
+   * @function constructor
+   * @description construct Singleton object
+   */
+  constructor(connection = null) {
+    if (!Singleton.instance) {
+      Singleton.instance = new DbManager(connection);
+    }
+  }
 
-      // HH::TODO why this const does works? VZ::Please take a look
-      const con = mysql.createConnection({
-        host: dbCredentials.host,
-        user: dbCredentials.user,
-        password: dbCredentials.password,
-      });
+  /**
+   * @function getInstance
+   * @description get dbManager instance
+   * @return {DbManager}
+   */
+  getInstance() {
+    return Singleton.instance;
+  }
+}
 
-      const createTestDBScript = 'CREATE DATABASE IF NOT EXISTS testDB';
-      await query(con, createTestDBScript);
-      con.changeUser({database: dbCredentials.database}, function(err) {
-        if (err) {
-          throw err;
-        }
-      });
-      // eslint-disable-next-line max-len
-      const createTestUsersTableScript = 'CREATE TABLE IF NOT EXISTS TestUsers (id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(255), lastName VARCHAR(255))';
-      await query(con, createTestUsersTableScript);
-      const clear = 'DELETE FROM TestUsers WHERE id > 0';
-      await query(con, clear);
-      const createTestUsersDataScript = 'INSERT INTO TestUsers (name, lastName) VALUES (\'Hayk\', \'Hakobyan\')';
-      await query(con, createTestUsersDataScript);
-      const selectAll = 'SELECT id, name, lastName FROM TestUsers WHERE id > 0';
-      await query(con, selectAll).then((result) => {
-        logger.info(JSON.stringify(result));
-      });
-      con.end();
-    },
-  };
+module.exports = (connection = null) => {
+  return new Singleton(connection).getInstance();
 };

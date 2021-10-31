@@ -1,4 +1,1 @@
-const dbMgr = require('./dbManager')();
-module.exports = () => {
-  return dbMgr;
-};
+module.exports = require('./dbManager');
