@@ -12,4 +12,5 @@ Switch between colorized or non colorized logger depending on dev, test or produ
 add debug, warning logs
 fix all commented TODOs
 add controllers for get/post/delete/put
-Get rid of hardcoded uses of env variables, use config instead.
+Investigate IAM and implement it in application
+Investigate options for front end (React?)

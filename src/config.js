@@ -10,6 +10,9 @@ const {
   dbUser,
   dbPassword,
   dbName,
+  dbPort,
+  dbMinPoolSize,
+  dbMaxPoolSize,
 } = process.env;
 
 module.exports = {
@@ -17,13 +20,17 @@ module.exports = {
   logLevel: LOG_LEVEL,
   port: !_.isUndefined(PORT) ? +(PORT) : null,
   dbCredentials: {
-    host: dbHost,
-    user: dbUser,
-    password: dbPassword,
+    connection: {
+      host: dbHost,
+      user: dbUser,
+      password: dbPassword,
+      port: parseInt(dbPort),
+    },
     database: dbName,
+    minPoolSize: parseInt(dbMinPoolSize),
+    maxPoolSize: parseInt(dbMaxPoolSize),
     // port: MYSQL_PORT = 3306;
     // xProtocolPort: X_PROTOCOL_PORT = 33060,
     // sslCert: db_instance_server_ca_cert
-    // port: !_.isUndefined(DATABASE_PORT) ? parseInt(DATABASE_PORT) : null
   },
 };

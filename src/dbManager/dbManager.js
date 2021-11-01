@@ -2,24 +2,18 @@
 
 const knex = require('knex');
 const _ = require('lodash');
+const config = require('../config');
 
 /** Class providing ability to connect to db via knex */
 class DbManager {
   /**
    * @function constructor
    * @description construct DbManager object
-   * @param {Object} connetcion : connection details
+   * @param {Object} connection : connection details
    */
   constructor(connection = null) {
     if (_.isNil(connection)) {
-      connection = {
-        // HH::TODO move env related staff to config
-        host: process.env.dbHost,
-        user: process.env.dbUser,
-        password: process.env.dbPassword,
-        database: process.env.dbName,
-        port: parseInt(process.env.db_port) | 3306,
-      };
+      connection = config.dbCredentials.connection;
     }
     connection.timezone = 'UTC';
     connection.typeCast = function castField(field, useDefaultTypeCasting) {
@@ -33,8 +27,8 @@ class DbManager {
       client: 'mysql',
       connection: connection,
       pool: {
-        min: process.env.db_min_pool_size ? parseInt(process.env.db_min_pool_size) : 0,
-        max: process.env.db_max_pool_size ? parseInt(process.env.db_max_pool_size) : 10,
+        min: config.dbCredentials.minPoolSize,
+        max: config.dbCredentials.maxPoolSize,
       },
     });
   }
@@ -53,6 +47,7 @@ class Singleton {
   /**
    * @function constructor
    * @description construct Singleton object
+   * @param {Object} connection : connection details
    */
   constructor(connection = null) {
     if (!Singleton.instance) {
