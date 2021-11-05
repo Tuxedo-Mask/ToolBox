@@ -14,4 +14,3 @@ Fix all commented TODOs
 Add controllers for get/post/delete/put
 Investigate IAM and implement it in application
 Investigate options for front end (React?)
-Add clearDb script to package.json

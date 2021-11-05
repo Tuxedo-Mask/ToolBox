@@ -6,6 +6,7 @@
   "scripts": {
     "start": "node app.js",
     "migration": "node src/db/migration.js",
+    "clearDb": "node src/db/clearDb.js",
     "lint": "eslint .",
     "test": ""
   },
