@@ -1,16 +1,17 @@
-test swagger /docs endpoint CRUDE - Create Read Update Delete Execute (+)
+Test swagger /docs endpoint CRUDE - Create Read Update Delete Execute (+)
    a. get testUser     Read
    b. post testUser    Create
    c. delete testUser  Delete
-   d. put testUser     Update(+)
-routes
-investigate promisify library
+   d. put testUser     Update
+Routes
+Investigate promisify library
 Replace dbManager with knex
-add dev, test, prod enviroments 
-unit test (mocha/chai/sinon/ nyc )
+Add dev, test, prod enviroments 
+Unit test (mocha/chai/sinon/ nyc )
 Switch between colorized or non colorized logger depending on dev, test or production environments
-add debug, warning logs
-fix all commented TODOs
-add controllers for get/post/delete/put
+Add debug, warning logs
+Fix all commented TODOs
+Add controllers for get/post/delete/put
 Investigate IAM and implement it in application
 Investigate options for front end (React?)
+Add clearDb script to package.json
