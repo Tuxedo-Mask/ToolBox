@@ -1,11 +1,10 @@
-Test swagger /docs endpoint CRUDE - Create Read Update Delete Execute (+)
+Test swagger /docs endpoint CRUDE - Create Read Update Delete Execute
    a. get testUser     Read
    b. post testUser    Create
    c. delete testUser  Delete
    d. put testUser     Update
 Routes
 Investigate promisify library
-Replace dbManager with knex
 Add dev, test, prod enviroments 
 Unit test (mocha/chai/sinon/ nyc )
 Switch between colorized or non colorized logger depending on dev, test or production environments
@@ -14,3 +13,6 @@ Fix all commented TODOs
 Add controllers for get/post/delete/put
 Investigate IAM and implement it in application
 Investigate options for front end (React?)
+Add migration for test data
+Add and fix error handler for unexpected application termination
+Add constants for endpoints
