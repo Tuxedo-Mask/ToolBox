@@ -16,4 +16,6 @@ Investigate options for front end (React?)
 Add migration for test data
 Add and fix error handler for unexpected application termination
 Add openApi docs for all added endpoints
-Add controllers for all added endpoints
+Add items relation
+Implement controllers logic
+Add default thunder-client collection set for get/add/edit/delete entities

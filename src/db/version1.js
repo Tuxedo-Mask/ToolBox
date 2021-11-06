@@ -1,3 +1,5 @@
+'use strict';
+
 const config = require('../config');
 const dbManager = require('../dbManager')(config.dbCredentials.connection);
 

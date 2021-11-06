@@ -1,3 +1,5 @@
+'use strict';
+
 const constants = require('../constants');
 
 if (!process.env.NODE_ENV || process.env.NODE_ENV === constants.environments.dev) {

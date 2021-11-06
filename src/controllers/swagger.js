@@ -1,3 +1,5 @@
+'use strict';
+
 const swaggerUI = require('swagger-ui-express');
 const YAML = require('yamljs');
 

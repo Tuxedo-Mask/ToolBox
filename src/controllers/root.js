@@ -1,3 +1,5 @@
+'use strict';
+
 const pckg = require('../../package');
 
 module.exports = (req, res) => {
