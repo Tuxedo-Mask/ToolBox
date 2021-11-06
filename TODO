@@ -15,4 +15,5 @@ Investigate IAM and implement it in application
 Investigate options for front end (React?)
 Add migration for test data
 Add and fix error handler for unexpected application termination
-Add constants for endpoints
+Add openApi docs for all added endpoints
+Add controllers for all added endpoints

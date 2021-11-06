@@ -5,10 +5,10 @@ const {
   root,
   swagger,
 } = require('./controllers');
+const {endpoints} = require('./constants');
 
-router.use('/docs', swagger);
-router.get('/', root);
-router.get('/healthz', healthz);
-router.use('/docs', swagger);
+router.get(endpoints.root, root);
+router.use(endpoints.docs, swagger);
+router.get(endpoints.healthz, healthz);
 
 module.exports = router;
